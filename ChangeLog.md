@@ -1,8 +1,41 @@
+
+# DGtalTools-contrib  1.2
+
+- *global*
+  - Fix Appveyor and Travis  wioth old default osx_image with xcode12.2 and remove non used boost
+    cmake references. (Bertrand Kerautret [#53](https://github.com/DGtal-team/DGtalTools/pull/53)) 
+
+
+
+
+# DGtalTools-contrib  1.1
+
+- *global*
+  -  New way to handle command line options of DGtalTools-contrib by using CLI11 instead
+     boost program option. (Phuc Ngo and Bertrand Kerautret 
+     [#51](https://github.com/DGtal-team/DGtalTools-contrib/pull/51))     
+
+- *visualisation*
+  - graphViewer: fix compilation issue.
+    (Phuc Ngo  [#47](https://github.com/DGtal-team/DGtalTools-contrib/pull/47))
+  - graphViewer: fix display issue.
+    (Phuc Ngo  [#46](https://github.com/DGtal-team/DGtalTools-contrib/pull/46))
+    
+- *global*
+  - fix Cmake and CPP11 check
+  (Bertrand Kerautret [#48](https://github.com/DGtal-team/DGtalTools-contrib/pull/48))
+
+
+- *Geometry3d*
+  - fix off2obj: the colors of .off are now well exported in obj.
+   (Bertrand Kerautret [#49](https://github.com/DGtal-team/DGtalTools-contrib/pull/49))   
+
+
 # DGtalTools-contrib  1.0
 - *visualisation*
   - displayLineSegments: new option to display a second set of lines.
     (Bertrand Kerautret, 
-    [#33](https://github.com/DGtal-team/DGtalTools-contrib/pull/43))
+    [#43](https://github.com/DGtal-team/DGtalTools-contrib/pull/43))
  - displaySet2dPts: new tool to display sets of 2d points.
     (Bertrand Kerautret, 
     [#44](https://github.com/DGtal-team/DGtalTools-contrib/pull/44))

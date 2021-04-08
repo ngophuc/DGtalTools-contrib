@@ -5,8 +5,16 @@
 PROJECT(DGtalTools-contrib)
 
 cmake_minimum_required (VERSION 3.1) 
+cmake_policy(SET CMP0057 NEW)
 
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+
+# -----------------------------------------------------------------------------
+# CPP11 
+# -----------------------------------------------------------------------------
+ set (CMAKE_CXX_STANDARD 11)
+ set (CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 
 
@@ -27,36 +35,37 @@ LINK_DIRECTORIES(${DGTAL_LIBRARY_DIRS})
      message ("         CMAKE_CXX_FLAGS=" ${CMAKE_CXX_FLAGS} )
   endif (CMAKE_CXX_FLAGS MATCHES "-ftemplate-depth-[0-9]*")
 
-
-if(USE_OPENCV)
+## or USE_OPENCV
+if(WITH_OPENCV)
    find_package( OpenCV REQUIRED )
+   include_directories(${OpenCV_INCLUDE_DIRS})
+
 endif()
+
+
+# CLI11
+include_directories( "${PROJECT_SOURCE_DIR}/ext/" )
+
+
 
 # -----------------------------------------------------------------------------
 # Define variables and cmake parameters, and display some information
 # -----------------------------------------------------------------------------
 # SET(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
 SET(DGtalToolsContrib_VERSION_MAJOR 1)
-SET(DGtalToolsContrib_VERSION_MINOR 0)
+SET(DGtalToolsContrib_VERSION_MINOR 1)
 SET(DGtalToolsContrib_VERSION_PATCH 0)
 SET(DGTALTOOLSContrib_VERSION "${DGtalToolsContrib_VERSION_MAJOR}.${DGtalToolsContrib_VERSION_MINOR}.${DGtalToolsContrib_VERSION_PATCH}")
 SET(PROJECT_VERSION "${DGtalToolsContrib_VERSION_MAJOR}.${DGtalToolsContrib_VERSION_MINOR}.${DGtalToolsContrib_VERSION_PATCH}")
 SET(VERSION ${DGtalToolsContrib_VERSION_MAJOR}.${DGtalToolsContrib_VERSION_MINOR}.${DGtalToolsContrib_VERSION_PATCH})
 
-SET(Boost_USE_STATIC_LIBS   ON)
-SET(Boost_USE_MULTITHREADED ON)
-SET(Boost_USE_STATIC_RUNTIME OFF)
-SET(Boost_FOUND FALSE)
-FIND_PACKAGE(Boost 1.46.0 REQUIRED COMPONENTS program_options)
-if ( Boost_FOUND )
-  ADD_DEFINITIONS(${BOOST_DEFINITIONS} -DBOOST_ALL_NO_LIB)
-  message(STATUS "Boost and boost_program_options found.")
-  include_directories( ${Boost_INCLUDE_DIRS} )
-  SET(DGtalToolsContribLibDependencies ${DGtalToolsContribLibDependencies} 
-     ${Boost_LIBRAIRIES}  
-     ${Boost_PROGRAM_OPTIONS_LIBRARY})
-   SET(DGtalLibInc ${Boost_INCLUDE_DIRS})
-endif( Boost_FOUND )
+
+
+
+
+
+
+
 
 #------Tools subdirectories ------
 add_subdirectory(geometry2d)

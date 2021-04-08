@@ -1,4 +1,6 @@
 language: cpp
+dist: xenial
+osx_image: xcode12.2
 
 compiler:
   - gcc
@@ -7,9 +9,6 @@ compiler:
 os:
   - linux
   - osx
-
-
-sudo: false
 
 
 env:
